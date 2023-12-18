@@ -1,6 +1,5 @@
 package ru.netology
 
-
 data class Post(
     val id: Int, val name: String, val type: String, val description: String
 )
@@ -26,11 +25,9 @@ object WallServise {
         return posts.last()
     }
 
-    // функция для проставления лайка у поста
     fun likeById(id: Int) {
         for ((index, post) in posts.withIndex())
             println(posts[index])
-
     }
 
 }
@@ -116,14 +113,6 @@ fun main() {
         ""
     )
 
-    fun printCommand(array: Array<String>): String {
-        var allCommands = ""
-        for (str in array) {
-            var allCommands = " $str"
-        }
-        return allCommands
-    }
-
     fun result(array: Array<String>): String {
         var str = "\n"
         for (str0 in array) {
@@ -151,10 +140,8 @@ fun main() {
     println(post7)
     println(post8)
     println(post9)
-    println(post10)
     println(post10WithCommands)
 
     var allPosts = WallServise
     println(allPosts)
-
 }
