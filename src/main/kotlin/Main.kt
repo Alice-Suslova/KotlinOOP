@@ -144,4 +144,21 @@ fun main() {
 
     var allPosts = WallServise
     println(allPosts)
+
+
+    val post11 = Post(
+        0,
+        "New",
+        "Boolean",
+        "1 — true, 0 — false"
+    )
+
+    val lastPost = add(allPosts, post11)
+    println(lastPost)
+}
+
+fun add(allPosts: WallServise, newPost: Post) {
+    val lastPost = allPosts.size
+    var newPost.id = lastPost + 1
+
 }
