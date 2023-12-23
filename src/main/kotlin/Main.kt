@@ -1,6 +1,6 @@
 package ru.netology
 
-fun SwitchOfTypes (nameOfTyre : String) : String {
+fun SwitchOfTypes (nameOfType : String) : String {
     val listOfComments : Array<String> = arrayOf(
     "count (integer) — число пользователей, которым понравилась запись;\n",
     "user_likes* (integer) — наличие отметки «Мне нравится» от текущего пользователя (1 — есть, 0 — нет);\n",
@@ -8,10 +8,10 @@ fun SwitchOfTypes (nameOfTyre : String) : String {
     "can_publish* (integer) — информация о том, может ли текущий пользователь сделать репост записи (1 — может, 0 — не может).\n"
     )
 
-    if(nameOfTyre == "integer" || nameOfTyre == "string" || nameOfTyre == "boolean") {
-        return nameOfTyre
+    if(nameOfType == "integer" || nameOfType == "string" || nameOfType == "boolean") {
+        return nameOfType
     }
-    return nameOfTyre + listOfComments.contentToString()
+    return nameOfType + listOfComments.contentToString()
 }
 
 
