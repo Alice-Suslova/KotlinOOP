@@ -16,15 +16,15 @@ fun SwitchOfTypes(nameOfType: String): String {
 
 data class Post(
     var postId: Int,
-    val dateOfPublished: String = "07/21/2020",
-    val title: String = "Запись на стене | Разработчикам",
+    var dateOfPublished: String = "07/21/2020",
+    var title: String = "Запись на стене | Разработчикам",
     var page: Int,
     var listOnTheLeft: String,
-    val nameFieldOfTheList: String = "Запись на стене",
-    val descriptionFieldOfTheList: String = "Объект, описывающий запись на стене пользователя или сообщества, содержит следующие поля:",
+    var nameFieldOfTheList: String = "Запись на стене",
+    var descriptionFieldOfTheList: String = "Объект, описывающий запись на стене пользователя или сообщества, содержит следующие поля:",
     var fieldId: Int, //id самой табличной записи, не поста
     var fieldName: String,
-    val fieldTypeDescription: String,
+    var fieldTypeDescription: String,
     var fieldType: String = ""
 )
 
@@ -37,6 +37,26 @@ fun add(post: Post): Post {
     post.postId = newId // обновляем значение в поле id нового поста
     arrayOfAllPosts += post // новый пост также записываем в текущий массив в конец
     return post // возращаем пост с новым id
+}
+
+fun update(post: Post): Boolean {
+    for (onOfPost in arrayOfAllPosts) {
+        if (onOfPost.postId == post.postId) {
+
+            onOfPost.dateOfPublished = post.dateOfPublished
+            onOfPost.title = post.title
+            onOfPost.page = post.page
+            onOfPost.listOnTheLeft = post.listOnTheLeft
+            onOfPost.nameFieldOfTheList = post.nameFieldOfTheList
+            onOfPost.descriptionFieldOfTheList = post.descriptionFieldOfTheList
+            onOfPost.fieldId = post.fieldId
+            onOfPost.fieldName = post.fieldName
+            onOfPost.fieldTypeDescription = post.fieldTypeDescription
+            onOfPost.fieldType = post.fieldType
+        }
+        return true
+    }
+    return false
 }
 
 fun main() {
@@ -85,7 +105,7 @@ fun main() {
     )
     arrayOfAllPosts += post3
 
-    println(arrayOfAllPosts.contentToString())
+    println(arrayOfAllPosts.contentToString() + "\n")
 
     val post4 = Post(
         postId = 0,
@@ -98,5 +118,21 @@ fun main() {
     )
 
     println(add(post4)) // -> id = 4
+
+    // update postId = 2:
+    val post5 = Post(
+        postId = 1,
+        page = 1,
+        listOnTheLeft = "Документация",
+        fieldId = 5,
+        fieldName = "can_pin",
+        fieldTypeDescription = "Информация о том, может ли текущий пользователь закрепить запись (1 — может, 0 — не может).\"",
+        fieldType = SwitchOfTypes("boolean")
+    )
+    update(post5)
+
+    println(arrayOfAllPosts.contentToString() + "\n")
+
+
 }
 
